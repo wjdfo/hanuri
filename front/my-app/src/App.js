@@ -1,27 +1,66 @@
-import React from 'react';
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import { Canvas, useLoader } from '@react-three/fiber';
+import React, { Suspense, useState } from 'react';
+import * as THREE from "three";
+import { DDSLoader } from "three-stdlib";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
+import "./App.css";
 import ButtonComponent from './ButtonComponent';
-import ImageComponent from './ImageComponent';
-import { ImageProvider } from './ImageContext';
+import Input from './Input';
+import Menubar from './Menubar';
 
-const App = () => {
+THREE.DefaultLoadingManager.addHandler(/\.dds$/i, new DDSLoader());
+
+const Scene = (props) => {
+  const obj = useLoader(OBJLoader, props.src);
+  const width = window.innerWidth / 3 * 2;
+  const height = window.innerHeight * window.innerHeight / window.innerWidth;
+
   return (
-    <div style = {{display : 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px' }}>
-      <ImageProvider>
-        <div>
-          <ImageComponent />
-          <ButtonComponent />
+    <Canvas camera = {{position : [600, 400, -100]}} style = {{background : "white", width : width, height : height}}>
+      <PerspectiveCamera position = {[1500, 800, -500]} />
+      <primitive object = {obj} scale = {0.15}/>
+      <OrbitControls />
+      <directionalLight color="white" position={[550, 400, -100]} />
+      <ambientLight color = "grey" intensity = {0.8}/>
+    </Canvas>
+  );
+};
+
+function App() {
+  const [objSrc, setObjSrc] = useState('/Models/HNA070 v1.obj');
+
+  const handleClick = (newObjSrc) => {
+    setObjSrc(newObjSrc);
+  }
+
+  return (
+    <div>
+
+      <body>
+        <div className = 'header'>
+          <Menubar />
         </div>
-      </ImageProvider>
-      <div className = "Requirement" style = {{display : 'grid', gridTemplateColumns: 'repeat(2, 1fr)'}}>
-        <h4>작업 반경(mm)</h4><input type='text'></input>
-        <h4>작업 높이(mm)</h4><input type='text'></input>
-        <h4>공작물 무게(kg)</h4><input type='text'></input>
-        <h4>공작물 재질</h4><input type='text'></input>
-        <h4>공작물 개수</h4><input type='text'></input>
-        <h4>기타 요청 사항</h4><input type='text'></input>
-        <br/>
-        <input type = 'submit'></input><label for = '제출'/>
-      </div>
+
+        <div className = 'contentPane'>
+          
+          <div className = "left">
+            <div className = 'button'>
+              <ButtonComponent objSrc = {objSrc} onButtonClick = {handleClick}/>
+            </div>
+            <div id = "canvas-container">
+              <Suspense fallback = "...loading">
+                <Scene src = {objSrc}/>
+              </Suspense>
+            </div>
+          </div>
+          
+          <div className = "right">
+            <Input />
+          </div>
+        </div>
+      </body>
+
     </div>
   );
 };
