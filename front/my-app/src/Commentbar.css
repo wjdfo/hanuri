@@ -1,0 +1,21 @@
+.comment{
+    background-color: #15182f;
+    padding : 10px;
+    display : flex;
+    align-items: center;
+    justify-content: space-between;
+    color : white;
+    width : 100%;
+    height : 100%;
+    border-top : 3px solid white;
+}
+
+#com {
+    color : white;
+    margin-right : auto;
+}
+
+#cop {
+    color : white;
+    margin-left : auto;
+}

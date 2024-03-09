@@ -54,7 +54,7 @@ class Input extends React.Component {
 
     render() {
         return (
-            <form style = {{display : 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }} onSubmit={this.handleSubmit} >
+            <form style = {{display : 'grid', gridTemplateColumns: '2fr 3fr', gap : "10px" }} onSubmit={this.handleSubmit} >
                 <label>작업 반경(mm)</label>
                 <input type='text' name = 'range' onChange = {this.handleInputChange}></input>
 
@@ -74,18 +74,19 @@ class Input extends React.Component {
                 <select name = 'type' onChange = {this.handleInputChange}>
                     <option value = "지상고정형" selected>지상고정형</option>
                     <option value = "지상이동형">지상이동형</option>
-                    <option value = "천장고정형">천장고정형</option>
-                    <option value = "천장이동형">천장이동형</option>
+                    <option value = "천장고정형">천장시스템형</option>
                 </select>
 
                 <label>기타 요청사항</label>
-                <input type='text' name = 'etc' onChange = {this.handleInputChange}></input>
+                {/* <input type='text' name = 'etc' onChange = {this.handleInputChange}></input> */}
+                <textarea name = 'etc' onChange = {this.handleInputChange}></textarea>
 
                 <label>연락처(전화번호, 메일 등)</label>
                 <input type='text' name = 'contact' onChange = {this.handleInputChange}></input>
 
-                <div></div>
-                <input type = 'submit' value = '제출'></input>
+                <div className = "sbm-container">
+                    <input id = "sbm" type = 'submit' value = '견적 제출하기'></input>
+                </div>
             </form>
         )
     }
