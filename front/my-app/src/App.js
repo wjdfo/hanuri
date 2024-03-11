@@ -2,7 +2,7 @@ import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { Canvas, useLoader } from '@react-three/fiber';
 import React, { Suspense, useState } from 'react';
 import * as THREE from "three";
-import { DDSLoader } from "three-stdlib";
+// import { DDSLoader } from "three-stdlib";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import "./App.css";
 import ButtonComponent from './ButtonComponent';
@@ -10,7 +10,7 @@ import Commentbar from './Commentbar';
 import Input from './Input';
 import Menubar from './Menubar';
 
-THREE.DefaultLoadingManager.addHandler(/\.dds$/i, new DDSLoader());
+// THREE.DefaultLoadingManager.addHandler(/\.dds$/i, new DDSLoader());
 
 const Scene = (props) => {
   const obj = useLoader(OBJLoader, props.src);
