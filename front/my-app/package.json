@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://3.37.143.40",
+  "homepage": "http://34.227.108.212",
   "dependencies": {
     "@react-three/drei": "^9.93.0",
     "@react-three/fiber": "^8.15.14",

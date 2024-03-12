@@ -1,7 +1,6 @@
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { Canvas, useLoader } from '@react-three/fiber';
 import React, { Suspense, useState } from 'react';
-import * as THREE from "three";
 // import { DDSLoader } from "three-stdlib";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import "./App.css";
