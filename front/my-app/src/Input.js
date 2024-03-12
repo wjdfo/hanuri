@@ -31,7 +31,7 @@ class Input extends React.Component {
 
     handleSubmit = async (event) => {
         try {
-            const response = await fetch("https://3.37.143.40", {
+            const response = await fetch("https://34.227.108.212", {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
