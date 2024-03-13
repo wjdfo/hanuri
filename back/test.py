@@ -8,7 +8,7 @@ class mail :
     def __init__(self) :
         self.my_account = "wjdfoek37@gmail.com" # 메일 보낼 이메일 주소
         self.my_password = "lrrg wsct hjpx xfwo" # 생성한 앱 비밀번호 저장
-        self.to_mail = "wjdfoek3@naver.com" #메일 받을 계정
+        self.to_mail = "hanuri22@hanuri22.com" #메일 받을 계정
 
     def sendEmail(self, addr, smtp, msg):
         reg = "^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$"  # 유효성 검사를 위한 정규표현식
